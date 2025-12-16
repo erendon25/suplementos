@@ -25,12 +25,12 @@
             background: transparent;
             transition: background 0.4s, padding 0.4s;
             z-index: 1000;
-            padding: 20px 0;
+            padding: 30px 0; /* Más espacio inicial */
         }
         header.scrolled {
             background: rgba(255,255,255,0.95);
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            padding: 10px 0;
+            padding: 15px 0;
         }
         .header-content {
             display: flex;
@@ -40,12 +40,12 @@
             margin: 0 auto;
             padding: 0 20px;
         }
-        .logo { font-size: 28px; font-weight: 700; color: white; transition: color 0.4s; }
+        .logo { font-size: 32px; font-weight: 700; color: white; transition: color 0.4s; }
         header.scrolled .logo { color: #2E8B57; }
-        nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: 500; transition: color 0.4s; }
+        nav a { color: white; margin: 0 20px; text-decoration: none; font-weight: 500; font-size: 18px; transition: color 0.4s; }
         header.scrolled nav a { color: #333; }
         
-        /* Hero con video de fondo local */
+        /* Hero con VIDEO DE FONDO + Parallax suave + Blur */
         .hero {
             height: 100vh;
             position: relative;
@@ -56,48 +56,61 @@
         }
         .hero-video {
             position: absolute;
+            top: -50px; /* Permite movimiento al scroll */
+            left: 0;
+            width: 100%;
+            height: calc(100% + 100px);
+            object-fit: cover;
+            z-index: -2;
+            transform: translateY(0);
+            transition: transform 0.1s linear; /* Parallax suave */
+        }
+        .hero-overlay {
+            position: absolute;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            object-fit: cover;
+            background: rgba(0,0,0,0.4); /* Oscuro para texto */
+            backdrop-filter: blur(8px); /* Blur fuerte */
             z-index: -1;
         }
         .hero-content {
             position: relative;
             z-index: 1;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.7);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
         }
         
         .button {
             background: #2E8B57;
             color: white;
-            padding: 15px 30px;
+            padding: 18px 36px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: bold;
+            font-size: 18px;
             display: inline-block;
-            margin-top: 20px;
+            margin-top: 30px;
         }
         
-        /* WhatsApp Floating Button */
+        /* WhatsApp Floating */
         .whatsapp-float {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
+            bottom: 30px;
+            right: 30px;
             background: #25D366;
-            width: 60px;
-            height: 60px;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
             z-index: 1000;
             animation: pulse 2s infinite;
         }
-        .whatsapp-float img { width: 40px; }
+        .whatsapp-float img { width: 45px; }
         @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
         
-        footer { background: #333; color: white; padding: 40px 0; }
+        footer { background: #333; color: white; padding: 50px 0; }
     </style>
 </head>
 <body>
@@ -114,19 +127,17 @@
             </nav>
         </div>
     </header>
-
-    <!-- Hero con VIDEO DE FONDO LOCAL -->
-    <section class="hero">
+    <!-- Hero con VIDEO mejorado -->
+    <section class="hero" id="hero">
         <video class="hero-video" autoplay loop muted playsinline>
-            <source src="video logo.mp4" type="video/mp4"> <!-- REEMPLAZA "video-manufactura.mp4" con el nombre exacto de tu archivo -->
-            <!-- Opcional: agrega WebM para mejor compatibilidad -->
-            <!-- <source src="video-manufactura.webm" type="video/webm"> -->
-            Tu navegador no soporta video HTML5.
+            <source src="video logo.mp4" type="video/mp4"> <!-- Tu video local, súbelo al repo -->
+            Tu navegador no soporta video.
         </video>
+        <div class="hero-overlay"></div>
         <div class="container hero-content" data-aos="fade-up">
-            <h1 style="font-size: 50px;">LifeBoost Labs</h1>
-            <h2 style="font-size: 36px;">Suplementos Premium de L-Arginina Fabricados en USA</h2>
-            <p style="font-size: 22px; max-width: 800px; margin: 30px auto;">Calidad GMP, transparencia total y trazabilidad con QR.</p>
+            <h1 style="font-size: 55px;">LifeBoost Labs</h1>
+            <h2 style="font-size: 40px;">Suplementos Premium de L-Arginina Fabricados en USA</h2>
+            <p style="font-size: 24px; max-width: 900px; margin: 40px auto;">Calidad GMP certificada, transparencia total y trazabilidad con código QR en cada frasco.</p>
             <a href="#productos" class="button">Descubre Nuestro Producto</a>
         </div>
     </section>
@@ -189,14 +200,20 @@
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
     </a>
 
-    <!-- Scripts -->
+   <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 1200 });
         
-        // Header scroll effect
+        // Header scroll
         window.addEventListener('scroll', () => {
             document.getElementById('header').classList.toggle('scrolled', window.scrollY > 100);
+        });
+        
+        // Parallax suave para el video
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.scrollY;
+            document.querySelector('.hero-video').style.transform = `translateY(${scrollPosition * 0.5}px)`;
         });
     </script>
 
