@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeBoost Labs - Suplementos Premium de L-Arginina</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- AOS Library for scroll animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Roboto', sans-serif; margin: 0; padding: 0; color: #333; background: #fff; }
+        h1, h2, h3 { color: #2E8B57; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        section { padding: 100px 0; text-align: center; position: relative; }
+        
+        /* Header Sticky */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: transparent;
+            transition: background 0.4s, padding 0.4s;
+            z-index: 1000;
+            padding: 20px 0;
+        }
+        header.scrolled {
+            background: rgba(255,255,255,0.95);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 10px 0;
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .logo { font-size: 28px; font-weight: 700; color: white; transition: color 0.4s; }
+        header.scrolled .logo { color: #2E8B57; }
+        nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: 500; transition: color 0.4s; }
+        header.scrolled nav a { color: #333; }
+        
+        /* Hero con video de fondo local */
+        .hero {
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            color: white;
+        }
+        .hero-video {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.7);
+        }
+        
+        .button {
+            background: #2E8B57;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25D366;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            animation: pulse 2s infinite;
+        }
+        .whatsapp-float img { width: 40px; }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
+        
+        footer { background: #333; color: white; padding: 40px 0; }
+    </style>
+</head>
+<body>
+
+    <!-- Header Sticky -->
+    <header id="header">
+        <div class="header-content">
+            <div class="logo">LifeBoost Labs</div>
+            <nav>
+                <a href="#about">Quiénes Somos</a>
+                <a href="#productos">Productos</a>
+                <a href="#calidad">Calidad</a>
+                <a href="#contacto">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero con VIDEO DE FONDO LOCAL -->
+    <section class="hero">
+        <video class="hero-video" autoplay loop muted playsinline>
+            <source src="video logo.mp4" type="video/mp4"> <!-- REEMPLAZA "video-manufactura.mp4" con el nombre exacto de tu archivo -->
+            <!-- Opcional: agrega WebM para mejor compatibilidad -->
+            <!-- <source src="video-manufactura.webm" type="video/webm"> -->
+            Tu navegador no soporta video HTML5.
+        </video>
+        <div class="container hero-content" data-aos="fade-up">
+            <h1 style="font-size: 50px;">LifeBoost Labs</h1>
+            <h2 style="font-size: 36px;">Suplementos Premium de L-Arginina Fabricados en USA</h2>
+            <p style="font-size: 22px; max-width: 800px; margin: 30px auto;">Calidad GMP, transparencia total y trazabilidad con QR.</p>
+            <a href="#productos" class="button">Descubre Nuestro Producto</a>
+        </div>
+    </section>
+
+    <!-- Otras secciones (igual que antes) -->
+    <section id="about" style="background: #f8f9fa;">
+        <div class="container" data-aos="fade-up">
+            <h2>Quiénes Somos</h2>
+            <p data-aos="fade-up" data-aos-delay="200">LifeBoost Labs es una marca con sede en Miami, Florida, enfocada en suplementos de alta calidad y manufactura excelente en USA.</p>
+        </div>
+    </section>
+
+    <!-- Producto -->
+    <section id="productos" style="background: #f8f9fa;">
+        <div class="container" data-aos="fade-up">
+            <h2>L-Arginina Premium</h2>
+            <img src="https://via.placeholder.com/400x500?text=Frasco+L-Arginina" alt="Frasco L-Arginina" style="max-width:400px; border-radius:15px;" data-aos="zoom-in" data-aos-delay="200">
+            <p data-aos="fade-up" data-aos-delay="400">Lote: LOT-2025-001 | Expiración: 12/2027</p>
+            <img src="https://api.qrserver.com/v1/create-qr-code/?data=https://lifeboostlabs.com/products/l-arginine&size=200x200" alt="QR" style="width:200px;" data-aos="fade-up" data-aos-delay="600">
+        </div>
+    </section>
+
+    <!-- Calidad GMP -->
+    <section id="calidad">
+        <div class="container" data-aos="fade-up">
+            <h2>Calidad Certificada GMP</h2>
+            <img src="https://img.freepik.com/premium-vector/gmp-certified-icon-logo-label-good-manufacturing-practice-stamp-seal-vector-illustration_689076-764.jpg" alt="GMP" style="width:200px;" data-aos="flip-left">
+        </div>
+    </section>
+
+    <!-- Testimonios y Contacto (abreviados) -->
+    <section style="background: #f8f9fa;">
+        <div class="container" data-aos="fade-up">
+            <h2>Testimonios</h2>
+            <p data-aos="fade-left">"Gran calidad y confianza." - Cliente Satisfecho</p>
+        </div>
+    </section>
+
+    <section id="contacto">
+        <div class="container" data-aos="fade-up">
+            <h2>Contacto</h2>
+            <form>
+                <input type="text" placeholder="Nombre" style="width:100%; padding:15px; margin:10px 0;"><br>
+                <input type="email" placeholder="Email" style="width:100%; padding:15px; margin:10px 0;"><br>
+                <textarea placeholder="Mensaje" style="width:100%; height:150px; padding:15px;"></textarea><br>
+                <button class="button">Enviar</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 LifeBoost Labs</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating (reemplaza TU_NUMERO con tu WhatsApp real, ej. 573001234567) -->
+    <a href="https://wa.me/TU_NUMERO?text=Hola%20LifeBoost%20Labs" class="whatsapp-float" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    </a>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1200 });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            document.getElementById('header').classList.toggle('scrolled', window.scrollY > 100);
+        });
+    </script>
+
+</body>
+</html>
